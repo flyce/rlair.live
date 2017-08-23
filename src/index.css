@@ -1,0 +1,22 @@
+body {
+    font-family: Raleway;
+    background-color: #f4f4f4;
+    width: 100%;
+    margin: 0 auto 16px;
+}
+
+.bottomNavBar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.comment {
+    width: 100%;
+    color: aqua;
+}
+
+a {
+    text-decoration: none;
+    color:#F55852;
+}
