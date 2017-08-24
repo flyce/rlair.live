@@ -18,6 +18,7 @@ import Favorite from '../containers/Favorite';
 import WatchLater from '../containers/Later';
 import History from '../containers/History';
 import Register from '../components/Register';
+import User from '../containers/User';
 
 const theme = createMuiTheme({
     palette: createPalette({
@@ -57,6 +58,7 @@ const App = () => (
                 <Route path="/later" component={WatchLater}/>
                 <Route path="/history" component={History}/>
                 <Route path="/register" component={Register}/>
+                <Route path="/user" component={User}/>
                 <Route path="/test" component={Test}/>
                 <Route component={NoMatch}/>
             </Switch>

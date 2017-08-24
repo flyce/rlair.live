@@ -1,5 +1,5 @@
 export function post(url, json, token) {
-    var result = fetch("http://localhost:5000/" + url, {
+    var result = fetch("http://192.168.1.110:5000/" + url, {
         method: 'POST',
         headers: {
             'Authorization': token,

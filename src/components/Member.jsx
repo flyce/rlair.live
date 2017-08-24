@@ -18,7 +18,7 @@ import FavoriteIcon from 'material-ui-icons/FavoriteBorder';
 import ScheduleIcon from 'material-ui-icons/Schedule';
 import UploadIcon from 'material-ui-icons/FileUpload';
 import InfoIcon from 'material-ui-icons/InfoOutline';
-import HistoryIcon from 'material-ui-icons/Restore';
+// import HistoryIcon from 'material-ui-icons/Restore';
 import AboutIcon from 'material-ui-icons/Mood';
 
 
@@ -60,7 +60,7 @@ class Member extends Component {
 
         return (
             <div className={classes.root}>
-                <List className={classes.info} onClick={this.handleRedirect.bind(this, 'login')}>
+                <List className={classes.info} onClick={this.handleRedirect.bind(this, 'user')}>
                     <div className={classes.cover}>
                         <Avatar src={HeadImg} className={classes.avatar}/>
                     </div>

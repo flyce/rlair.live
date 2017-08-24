@@ -12,6 +12,7 @@ import Dialog, {
 import Snackbar from 'material-ui/Snackbar';
 
 import TextField from 'material-ui/TextField';
+import { post } from '../fetch/post';
 
 const styleSheet = createStyleSheet('AddComment', theme => ({
     button: {
@@ -53,19 +54,26 @@ class AddComment extends React.Component {
     handleDialogConfirm = () => {
         const addComment = this.props.addComment;
         addComment({
-            username: '刘作虎',
-            headImageUrl: 'http://rlair.live:5000/headImageUrl.jpg',
+            username: localStorage.getItem('username'),
+            headImageUrl: 'http://192.168.1.110:5000/headImageUrl.jpg',
             context: this.state.comment
         });
         // post to server
-
-
-        this.setState({
-            dialogOpen: false,
-            toastMessage: '保存成功',
-            toastOpen: true,
-            comment: '',
-        });
+        post('comment/',
+            {
+                userId: localStorage.getItem('userId'),
+                videoId: window.location.pathname.match("[0-9]{5}")[0],
+                context: this.state.comment
+            },
+            localStorage.getItem('token')
+        ).then(function () {
+            this.setState({
+                dialogOpen: false,
+                toastMessage: '保存成功',
+                toastOpen: true,
+                comment: '',
+            });
+        }.bind(this))
     };
 
     /***

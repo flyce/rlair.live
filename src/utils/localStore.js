@@ -23,3 +23,14 @@ export function setItem(key, value) {
         }
     }
 }
+
+export function removeItem(key) {
+    try {
+        // ios safari 无痕模式下，直接使用 localStorage.setItem 会报错
+        localStorage.removeItem(key);
+    } catch (ex) {
+        if (__DEV__) {
+            console.log('localStorage.setItem', ex.message);
+        }
+    }
+}

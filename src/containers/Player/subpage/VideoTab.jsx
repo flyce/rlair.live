@@ -4,8 +4,12 @@ import { withStyles, createStyleSheet } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
+import IconButton from 'material-ui/IconButton';
+import FavoriteIcon from 'material-ui-icons/FavoriteBorder';
+import ScheduleIcon from 'material-ui-icons/Schedule';
 
 import Comment from './Comments';
+import { post } from '../../../fetch/post';
 
 const TabContainer = props =>
     <div style={{ padding: 0 }}>
@@ -18,8 +22,12 @@ TabContainer.propTypes = {
 
 const styleSheet = createStyleSheet('VideoTab', theme => ({
     root: {
-        backgroundColor: "background-color: #f4f4f4",
+        backgroundColor: "#f4f4f4",
     },
+    iconButton: {
+        color: "#9c27b0",
+
+    }
 }));
 
 class VideoTab extends Component {
@@ -33,6 +41,22 @@ class VideoTab extends Component {
     handleChange = (event, index) => {
         this.setState({ index });
     };
+
+    handleIconButtonClick(type, event) {
+        event.preventDefault();
+        post(
+            "type/",
+            {
+                "userId": localStorage.getItem('userId'),
+                "videoId": window.location.pathname.match("[0-9]{5}")[0],
+                "type": type
+            },
+            localStorage.getItem('token')
+        ).then(function (data) {
+            console.log(data);
+            alert("suc");
+        })
+    }
 
     render() {
         const classes = this.props.classes;
@@ -53,6 +77,22 @@ class VideoTab extends Component {
                 </AppBar>
                 {this.state.index === 0 && <TabContainer>
                     <div style={{padding: 16}}>
+                        <div>
+                            <IconButton
+                                className={classes.iconButton}
+                                onClick={this.handleIconButtonClick.bind(this, "favorite")}
+                                name="favorite"
+                            >
+                                <FavoriteIcon />
+                            </IconButton>
+                            <IconButton
+                                className={classes.iconButton}
+                                onClick={this.handleIconButtonClick.bind(this, "later")}
+                                name="later"
+                            >
+                                <ScheduleIcon />
+                            </IconButton>
+                        </div>
                         <Typography type="body1" component="p">
                             {this.props.video.introduction || defaultIntroduction}
                         </Typography>

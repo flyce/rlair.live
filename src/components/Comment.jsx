@@ -23,7 +23,7 @@ class Comment extends React.Component {
                     }}
                 >
                     <div style={{display: 'flex', marginBottom: 2}}>
-                        <Avatar alt={comment.username} src={comment.headImageUrl} />
+                        <Avatar alt={comment.username + ""} src={comment.headImageUrl} />
                         <Typography type="headline" component="h6" style={{marginLeft: 10, justifyContent: 'center', }}>
                             {comment.username}
                         </Typography>
