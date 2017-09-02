@@ -10,13 +10,15 @@ import LockIcon from 'material-ui-icons/LockOutline';
 import { post } from '../fetch/post';
 import { setItem, getItem } from '../utils/localStore';
 
+import TitleBar from './TitleBar';
+
 import history from '../router/history';
 
 const styleSheet = createStyleSheet('Login', {
     main: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '97vh',
+        minHeight: '88vh',
         alignItems: 'center',
         justifyContent: 'center',
         // height: '500px',
@@ -120,55 +122,67 @@ class Login extends Component {
                 }
             }.bind(this)
         );
-        // 重定向
-        //
+    }
+
+    handleRedirectRegister() {
+        history.push('/register');
     }
 
     render() {
         const classes = this.props.classes;
 
         return (
-            <div className={classes.main}>
-                <Card className={classes.card} >
-                    <div className={classes.login}>rlair.live Login</div>
-                    <div className={classes.avatar}>
-                        <Avatar color="primary" size={60} ><LockIcon /></Avatar>
-                    </div>
+            <div>
+                <TitleBar title="登陆"/>
+                <div className={classes.main}>
+                    <Card className={classes.card} >
+                        <div className={classes.login}>rlair.live Login</div>
+                        <div className={classes.avatar}>
+                            <Avatar color="primary" size={60} ><LockIcon /></Avatar>
+                        </div>
 
-                    <div className={classes.form}>
-                        <div>
-                            <TextField
-                                name="username"
-                                label="用户名"
-                                className={classes.input}
-                                onChange={this.handleTextChange.bind(this)}
-                                autoFocus
-                                // helperText={this.state.usernameWarning}
-                            />
+                        <div className={classes.form}>
+                            <div>
+                                <TextField
+                                    name="username"
+                                    label="用户名"
+                                    className={classes.input}
+                                    onChange={this.handleTextChange.bind(this)}
+                                    autoFocus
+                                    // helperText={this.state.usernameWarning}
+                                />
+                            </div>
+                            <div className={classes.input}>
+                                <TextField
+                                    name="password"
+                                    label="密码"
+                                    type="password"
+                                    className={classes.input}
+                                    onChange={this.handleTextChange.bind(this)}
+                                    // helperText="password"
+                                />
+                            </div>
                         </div>
-                        <div className={classes.input}>
-                            <TextField
-                                name="password"
-                                label="密码"
-                                type="password"
-                                className={classes.input}
-                                onChange={this.handleTextChange.bind(this)}
-                                // helperText="password"
-                            />
-                        </div>
-                    </div>
-                    <CardActions>
-                        <Button
-                            raised
-                            color="primary"
+                        <CardActions>
+                            <Button
+                                raised
+                                color="primary"
+                                className={classes.button}
+                                onClick={this.handleLogin.bind(this)}
+                                disabled={this.state.submitButtonDisabled}
+                            >
+                                登陆
+                            </Button>
+                        </CardActions>
+                        <p
                             className={classes.button}
-                            onClick={this.handleLogin.bind(this)}
-                            disabled={this.state.submitButtonDisabled}
+                            style={{textAlign: 'center', color: "#b9b9b9"}}
+                            onClick={this.handleRedirectRegister.bind(this)}
                         >
-                            登陆
-                        </Button>
-                    </CardActions>
-                </Card>
+                            注册
+                        </p>
+                    </Card>
+                </div>
             </div>
         );
     }

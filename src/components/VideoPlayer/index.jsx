@@ -6,7 +6,7 @@ export default class VideoPlayer extends React.Component{
     componentDidMount() {
         // instantiate video.js
         this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-            console.log('onPlayerReady', this)
+            // console.log('onPlayerReady', this)
             // console.log('播放器初始化完成!')
         });
     }
@@ -15,7 +15,7 @@ export default class VideoPlayer extends React.Component{
     componentWillUnmount() {
         if (this.player) {
             this.player.dispose();
-            console.log("结束播放");
+            // console.log("结束播放");
         }
     }
 

@@ -55,7 +55,7 @@ export default class Comments extends Component {
                     this.state.isLoading ? <div>加载中...</div> :
                         this.state.comments.length === 0? <div style={{margin: 10}}>还没有评论哟, 快来添加吧</div>: this.state.comments.map(
                             (comment, index) => (
-                                <Comment key={index} username={comment.username || comment.userId} headImageUrl={comment.headImageUrl || "http://192.168.1.110:5000/headImageUrl.jpg"} context={comment.context}/>
+                                <Comment key={index} username={comment.username || comment.userId} headImageUrl={comment.headImageUrl || "https://api.rlair.live/headImageUrl.jpg"} context={comment.context}/>
                             )
                         )
                 }

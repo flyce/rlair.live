@@ -39,7 +39,9 @@ class About extends Component {
                             邮箱：[E-mail: ] <a href="mailto:mail@flyce.cn">mail@flyce.cn</a><br />
                             微博：[Weibo: ] <Link to="http://weibo.com/u/3833951738/" target="_blank">一个被修飞机耽误的程序员</Link><br />
                             <br />
+                        </Typography>
                             <Divider />
+                        <Typography component="p">
                             <br />
                             目前暂住 KMG / ZPPP<br />
                             生活尚可控制<br />
@@ -56,7 +58,9 @@ class About extends Component {
                             可能会把怎么制作这个网站的过程录成视频<br />
                             感兴趣的先看看源码 <a href="https://github.com/flyce">flyce (王全峰) · GitHub</a><br />
                             <br />
-                            <Divider />
+                        </Typography>
+                        <Divider />
+                        <Typography component="p">
                             <br />
                             程序目前还在开发中，仍需进一步完善<br />
                             <br />
@@ -65,6 +69,7 @@ class About extends Component {
                             2. "我的收藏"和"稍后再看"列表间接性抽风<br />
                             &nbsp;&nbsp;&nbsp;&nbsp;硬盘坏了写好的代码丢失了一部分<br />
                             3. 项目为移动端开发，桌面端体验不好<br />
+                            4. 服务端程序部分功能有缺陷<br />
 
 
                             <br />
@@ -72,7 +77,14 @@ class About extends Component {
                             1. 加入下拉加载更多(着急上线，就先没加上)<br />
                             2. 考虑引入 redux<br />
                             3. 把 API 文档写出来(其他要用的朋友直接调 API)<br />
-                            4. 适配桌面浏览器
+                            4. 适配桌面浏览器<br />
+                            <br />
+                        </Typography>
+                        <Divider />
+                        <Typography component="p">
+                            <br />
+                            程序目前还到处都是BUG<br />
+                            大佬不要攻击我😂&nbsp;😂&nbsp;😂
                         </Typography>
                     </CardContent>
                 </Card>

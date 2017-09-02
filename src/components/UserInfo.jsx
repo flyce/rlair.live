@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles, createStyleSheet } from 'material-ui/styles';
 import Card, { CardContent } from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import { setItem, getItem, removeItem } from '../utils/localStore';
+import { getItem, removeItem } from '../utils/localStore';
 import history from '../router/history';
 
 const styleSheet = createStyleSheet('UploadVideo', theme => ({

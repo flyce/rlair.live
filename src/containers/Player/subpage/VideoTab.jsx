@@ -5,11 +5,13 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
-import FavoriteIcon from 'material-ui-icons/FavoriteBorder';
+import FavoriteBorderIcon from 'material-ui-icons/FavoriteBorder';
+import FavoriteIcon from 'material-ui-icons/Favorite';
 import ScheduleIcon from 'material-ui-icons/Schedule';
 
 import Comment from './Comments';
 import { post } from '../../../fetch/post';
+import { get } from '../../../fetch/get';
 
 const TabContainer = props =>
     <div style={{ padding: 0 }}>
@@ -35,7 +37,16 @@ class VideoTab extends Component {
         super(props);
         this.state = ({
             index: 0,
+            favorite: false,
         });
+    }
+
+    componentDidMount() {
+        get('type/check/favorite/' + window.location.pathname.match("[0-9]{5}")[0]).then(function (data) {
+            this.setState({
+                favorite: data,
+            });
+        }.bind(this));
     }
 
     handleChange = (event, index) => {
@@ -53,8 +64,11 @@ class VideoTab extends Component {
             },
             localStorage.getItem('token')
         ).then(function (data) {
-            console.log(data);
-            alert("suc");
+            // data validation
+            // console.log(data);
+        });
+        this.setState({
+            favorite: !this.state.favorite,
         })
     }
 
@@ -83,7 +97,7 @@ class VideoTab extends Component {
                                 onClick={this.handleIconButtonClick.bind(this, "favorite")}
                                 name="favorite"
                             >
-                                <FavoriteIcon />
+                                {this.state.favorite === true ? <FavoriteIcon /> : <FavoriteBorderIcon/>}
                             </IconButton>
                             <IconButton
                                 className={classes.iconButton}

@@ -8,14 +8,16 @@ import TextField from 'material-ui/TextField';
 import PeoPleIcon from 'material-ui-icons/PeopleOutline';
 
 import { post } from '../fetch/post';
+import { getItem } from '../utils/localStore';
 
 import history from '../router/history';
+import TitleBar from "./TitleBar";
 
 const styleSheet = createStyleSheet('Login', {
     main: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '97vh',
+        minHeight: '88vh',
         alignItems: 'center',
         justifyContent: 'center',
         // height: '500px',
@@ -58,6 +60,12 @@ class Regeist extends Component {
             error: false,
             helperText: '',
             submitButtonDisabled: true
+        }
+    }
+
+    componentDidMount() {
+        if (getItem("token")) {
+            history.push('/');
         }
     }
 
@@ -177,58 +185,61 @@ class Regeist extends Component {
         const classes = this.props.classes;
 
         return (
-            <div className={classes.main}>
-                <Card className={classes.card} >
-                    <div className={classes.login}>rlair.live regist</div>
-                    <div className={classes.avatar}>
-                        <Avatar color="primary" size={60} ><PeoPleIcon /></Avatar>
-                    </div>
+            <div>
+                <TitleBar title="注册"/>
+                <div className={classes.main}>
+                    <Card className={classes.card} >
+                        <div className={classes.login}>rlair.live register</div>
+                        <div className={classes.avatar}>
+                            <Avatar color="primary" size={60} ><PeoPleIcon /></Avatar>
+                        </div>
 
-                    <div className={classes.form}>
-                        <div>
-                            <TextField
-                                name="username"
-                                label="用户名"
-                                className={classes.input}
-                                onChange={this.handleTextChange.bind(this)}
-                                autoFocus
-                                // helperText={this.state.usernameWarning}
-                            />
+                        <div className={classes.form}>
+                            <div>
+                                <TextField
+                                    name="username"
+                                    label="用户名"
+                                    className={classes.input}
+                                    onChange={this.handleTextChange.bind(this)}
+                                    autoFocus
+                                    // helperText={this.state.usernameWarning}
+                                />
+                            </div>
+                            <div className={classes.input}>
+                                <TextField
+                                    name="password"
+                                    label="密码"
+                                    type="password"
+                                    className={classes.input}
+                                    onChange={this.handleTextChange.bind(this)}
+                                    error={this.state.error}
+                                />
+                            </div>
+                            <div className={classes.input}>
+                                <TextField
+                                    name="passwordRepeat"
+                                    label="再次输入密码"
+                                    type="password"
+                                    className={classes.input}
+                                    onChange={this.handleTextChange.bind(this)}
+                                    helperText={this.state.helperText}
+                                    error={this.state.error}
+                                />
+                            </div>
                         </div>
-                        <div className={classes.input}>
-                            <TextField
-                                name="password"
-                                label="密码"
-                                type="password"
-                                className={classes.input}
-                                onChange={this.handleTextChange.bind(this)}
-                                error={this.state.error}
-                            />
-                        </div>
-                        <div className={classes.input}>
-                            <TextField
-                                name="passwordRepeat"
-                                label="再次输入密码"
-                                type="password"
-                                className={classes.input}
-                                onChange={this.handleTextChange.bind(this)}
-                                helperText={this.state.helperText}
-                                error={this.state.error}
-                            />
-                        </div>
-                    </div>
-                    <CardActions>
-                        <Button
-                            raised
-                            color="primary"
-                            className={classes.button}
-                            onClick={this.handleLogin.bind(this)}
-                            disabled={this.state.submitButtonDisabled}
-                        >
-                            注册
-                        </Button>
-                    </CardActions>
-                </Card>
+                        <CardActions>
+                            <Button
+                                raised
+                                color="primary"
+                                className={classes.button}
+                                onClick={this.handleLogin.bind(this)}
+                                disabled={this.state.submitButtonDisabled}
+                            >
+                                注册
+                            </Button>
+                        </CardActions>
+                    </Card>
+                </div>
             </div>
         );
     }
