@@ -110,7 +110,6 @@ class Login extends Component {
             }
         ).then(
             function (data) {
-                console.log(data);
                 if (data.token && this.state.username && data.userId) {
                    setItem("token", data.token);
                    setItem("username", this.state.username);
