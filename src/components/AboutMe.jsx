@@ -54,7 +54,7 @@ class About extends Component {
                             这个项目就结束了<br />
                             不要问我什么时候更新视频<br />
                             也不要问我什么时候能写完<br />
-                            我都不知道<br />
+                            我不知道<br />
                             再问打哭你信不信！！！<br />
                             <br />
                         </Typography>
@@ -65,7 +65,9 @@ class About extends Component {
                             可能会把怎么制作这个网站的过程录成视频<br />
                             只是可能<br />
                             别太当真<br />
-                            不确定有没有那个时间和经历<br />
+                            不确定有没有那个时间和精力<br />
+                            最近公司的培训压力很大<br />
+                            每周至少考两次试那种<br />
                             感兴趣的先看看源码 <a href="https://github.com/flyce" target="_blank" rel="noopener noreferrer">flyce · GitHub</a><br />
                             <br />
                         </Typography>
